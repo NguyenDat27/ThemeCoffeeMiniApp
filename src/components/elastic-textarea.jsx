@@ -1,43 +1,27 @@
-import { useEffect, useMemo, useRef, useState, useCallback } from "react";
+import { useEffect, useRef, useCallback } from "react";
 import PropTypes from "prop-types";
 import { tripUnit } from "../utils/dom";
 
 const ElasticTextarea = ({ onChange, maxRows, ...props }) => {
   const ref = useRef(null);
-  const [height, setHeight] = useState(0);
 
   const adjustHeight = useCallback((el) => {
+    const styles = window.getComputedStyle(el);
+    const maxHeight = (maxRows ?? 1) * tripUnit(styles.lineHeight);
+
     el.style.minHeight = "0px";
     if (maxHeight && maxHeight < el.scrollHeight) {
       el.style.minHeight = `${maxHeight}px`;
     } else {
       el.style.minHeight = `${el.scrollHeight}px`;
     }
-    setHeight(el.scrollHeight);
-  }, [maxHeight]);
+  }, [maxRows]);
 
   useEffect(() => {
     if (ref.current) {
       adjustHeight(ref.current);
     }
   }, [adjustHeight]);
-
-  const numberOfRows = useMemo(() => {
-    if (height && ref.current) {
-      const styles = window.getComputedStyle(ref.current);
-      const lines = height / tripUnit(styles.lineHeight);
-      return Math.ceil(lines);
-    }
-    return 1;
-  }, [height]);
-
-  const maxHeight = useMemo(() => {
-    if (ref.current) {
-      const styles = window.getComputedStyle(ref.current);
-      return (maxRows ?? numberOfRows) * tripUnit(styles.lineHeight);
-    }
-    return 0;
-  }, [numberOfRows, maxRows]);
 
   return (
     <textarea
@@ -46,7 +30,6 @@ const ElasticTextarea = ({ onChange, maxRows, ...props }) => {
         height: "auto",
         paddingTop: 0,
         paddingBottom: 0,
-        maxHeight,
         resize: "none",
       }}
       ref={ref}
