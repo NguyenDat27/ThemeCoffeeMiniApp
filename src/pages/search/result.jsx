@@ -79,6 +79,7 @@ const SearchResult = () => {
   );
 };
 
+
 SearchResultContent.propTypes = {
   result: PropTypes.array.isRequired,
 };

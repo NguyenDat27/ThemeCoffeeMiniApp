@@ -86,26 +86,6 @@ export const totalPriceState = selector({
   },
 });
 
-export const keywordState = atom({
-  key: "keyword",
-  default: "",
-});
-
-export const resultState = selector({
-  key: "result",
-  get: async ({ get }) => {
-    const keyword = get(keywordState);
-    if (!keyword.trim()) {
-      return [];
-    }
-    const products = get(productsState);
-    await wait(500);
-    return products.filter((product) =>
-      product.name.trim().toLowerCase().includes(keyword.trim().toLowerCase())
-    );
-  },
-});
-
 export const storesState = atom({
   key: "stores",
   default: [
