@@ -7,6 +7,7 @@ export const {useStore} = createStore(
         products: [],
         variants: [],
         notification: [],
+        keyword: "",
     },
 )
 

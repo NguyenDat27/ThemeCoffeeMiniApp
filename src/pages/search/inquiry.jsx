@@ -1,17 +1,12 @@
 import { useCallback } from "react";
-import { useRecoilState } from "recoil";
-import { keywordState } from "../../state";
 import { Box, Input } from "zmp-ui";
-import { debounce } from "lodash";
-
+import { useStore } from "../../store/store";
 const Inquiry = () => {
-  const [keyword, setKeyword] = useRecoilState(keywordState);
+  const [keyword, setKeyword] = useStore.keyword();
 
   const handleChange = useCallback(
     (keyword) => {
-      debounce((keyword) => {
-        setKeyword(keyword);
-      }, 500)(keyword);
+      setKeyword(keyword)
     },
     [setKeyword]
   );

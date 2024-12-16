@@ -1,14 +1,20 @@
 import { Suspense } from "react";
 import PropTypes from "prop-types";
-import { useRecoilValue } from "recoil";
-import { resultState } from "../../state";
 import { Box, Text } from "zmp-ui";
 import { FinalPrice } from "../../components/display/final-price";
 import ProductPicker from "../../components/product/picker";
 import { ProductSearchResultSkeleton } from "../../components/skeletons";
+import { useStore } from "../../store/store";
+import { mergeData, useFilteredProducts } from "../../hooks/hooks";
 
 const SearchResultContent = () => {
-  const result = useRecoilValue(resultState);
+  
+  const [keyword] = useStore.keyword();
+  const [products] = useStore.products();
+  const [variants] = useStore.variants();
+
+  const productFiltered = useFilteredProducts(keyword, products);
+  const result = mergeData(productFiltered, variants);
 
   return (
     <Box flex flexDirection="column" className="bg-background flex-1 min-h-0">

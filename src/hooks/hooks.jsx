@@ -107,3 +107,26 @@ export const mergeData = (products, variants) => {
     };
   });
 };
+
+
+export function useFilteredProducts(keyword, products) {
+  const [filteredProducts, setFilteredProducts] = useState([]);
+
+  useEffect(() => {
+    if (!keyword.trim()) {
+      setFilteredProducts([]);
+      return;
+    }
+    
+    const timer = setTimeout(() => {
+      const result = products.filter((product) =>
+        product.name.trim().toLowerCase().includes(keyword.trim().toLowerCase())
+      );
+      setFilteredProducts(result);
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, [keyword, products]);
+
+  return filteredProducts;
+}
