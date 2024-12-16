@@ -14,7 +14,7 @@ function ListRenderer({
 }) {
   const [isCollapsed, setIsCollapsed] = useState(true);
   const collapsedItems = useMemo(() => {
-    return items.slice(0, limit);
+    return (items || []).slice(0, limit);
   }, [items, limit]);
 
   return (
@@ -65,6 +65,10 @@ ListRenderer.propTypes = {
   renderKey: PropTypes.func,
   onClick: PropTypes.func,
   noDivider: PropTypes.bool,
+};
+
+ListRenderer.defaultProps = {
+  items: [],
 };
 
 export default ListRenderer;
