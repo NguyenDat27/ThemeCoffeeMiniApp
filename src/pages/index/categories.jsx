@@ -2,12 +2,11 @@ import PropTypes from "prop-types";
 import { Box, Text } from "zmp-ui";
 import { useNavigate } from "react-router";
 import { useStore } from "../../store/store";
-import { useState } from "react";
 
 const Categories = () => {
-  const [categories] = useStore.categorys();
+  const [categories] = useStore.categories();
   const navigate = useNavigate();
-  const [selectCategoryId, setSelectedCategoryId] = useState("coffee");
+  const [selectCategoryId, setSelectedCategoryId] = useStore.selectedCategory();
 
   console.log(categories);
   console.log(selectCategoryId);

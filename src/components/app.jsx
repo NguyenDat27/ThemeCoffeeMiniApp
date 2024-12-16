@@ -14,7 +14,7 @@ import { notificationData } from "../data/notification";
 const MyApp = () => {
 
   const [banner, setBanner] = useStore.banners();
-  const [category, setCategory] = useStore.categorys();
+  const [category, setCategory] = useStore.categories();
   const [product, setProduct] = useStore.products();
   const [variant, setVariant] = useStore.variants();
   const [notification, setNotification] = useStore.notifications();

@@ -3,11 +3,13 @@ import createStore from 'teaful';
 export const {useStore} = createStore(
     {
         banners: [],
-        categorys: [],
+        categories: [],
+        selectedCategory: "coffee",
         products: [],
         variants: [],
         notification: [],
         keyword: "",
+        
     },
 )
 

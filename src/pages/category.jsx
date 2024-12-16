@@ -1,13 +1,15 @@
 import { Suspense } from "react";
 import PropTypes from "prop-types";
 import { useRecoilValue } from "recoil";
-import { categoriesState, productsByCategoryState, selectedCategoryIdState } from "../state";
+import { productsByCategoryState } from "../state";
 import { Box, Header, Page, Tabs, Text } from "zmp-ui";
 import ProductItem from "../components/product/item";
+import { useStore } from "../store/store";
 
 const CategoryPicker = () => {
-  const categories = useRecoilValue(categoriesState);
-  const selectedCategory = useRecoilValue(selectedCategoryIdState);
+  const [selectedCategory] = useStore.selectedCategory();
+  const [categories] = useStore.categories();
+  
   return (
     <Tabs
       scrollable
