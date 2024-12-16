@@ -9,7 +9,9 @@ export const {useStore} = createStore(
         variants: [],
         notification: [],
         keyword: "",
-        
+        cartItems: [],
+        totalPrice: 0,
+        quantity: 0,
     },
 )
 

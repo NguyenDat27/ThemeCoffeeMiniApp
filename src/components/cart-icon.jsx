@@ -1,10 +1,9 @@
-import { useRecoilValue } from "recoil";
-import { cartState } from "../state";
 import { Box, Text } from "zmp-ui";
 import PropTypes from "prop-types";
+import { useStore } from "../store/store";
 
 export const CartIcon = ({ active }) => {
-  const cart = useRecoilValue(cartState);
+  const [cart] = useStore.cartItems();
 
   return (
     <Box className="relative">

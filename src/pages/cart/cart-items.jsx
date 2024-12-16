@@ -1,14 +1,13 @@
 import { useState } from "react";
-import { useRecoilValue } from "recoil";
-import { cartState } from "../../state";
 import { Box, Text } from "zmp-ui";
 import { FinalPrice } from "../../components/display/final-price";
 import { DisplaySelectedOptions } from "../../components/display/selected-options";
 import ListRenderer from "../../components/list-renderer";
 import ProductPicker from "../../components/product/picker";
+import { useStore } from "../../store/store";
 
 export const CartItems = () => {
-  const cart = useRecoilValue(cartState);
+  const [cart] = useStore.cartItems();
   const [editingItem, setEditingItem] = useState();
 
   return (

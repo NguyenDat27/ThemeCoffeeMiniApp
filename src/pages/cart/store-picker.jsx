@@ -17,6 +17,8 @@ const StorePicker = () => {
   const setSelectedStoreIndex = useSetRecoilState(selectedStoreIndexState);
   const selectedStore = useRecoilValue(selectedStoreState);
 
+  console.log("nearby",nearbyStoresState,);
+  console.log("select", selectedStore)
   if (!selectedStore) {
     return <RequestStorePickerLocation />;
   }

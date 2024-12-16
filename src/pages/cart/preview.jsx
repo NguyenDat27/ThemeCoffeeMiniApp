@@ -1,12 +1,19 @@
 import { Box, Button, Text } from "zmp-ui";
 import { DisplayPrice } from "../../components/display/price";
-import { useRecoilValue } from "recoil";
-import { totalPriceState, totalQuantityState } from "../../state";
 import pay from "../../utils/product";
+import { useStore } from "../../store/store";
+import { calcFinalPrice } from "../../utils/product";
 
 const CartPreview = () => {
-  const quantity = useRecoilValue(totalQuantityState);
-  const totalPrice = useRecoilValue(totalPriceState);
+  const [cartItems] = useStore.cartItems();
+  console.log(cartItems)
+
+  const quantity = cartItems.reduce((total, item) => total + item.quantity, 0);
+
+  const totalPrice =   cartItems.reduce((total, item) =>
+      total + item.quantity * calcFinalPrice(item.product, item.options),
+    0
+  );
 
   return (
     <Box flex className="sticky bottom-0 bg-background p-4 space-x-4">

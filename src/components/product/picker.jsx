@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { createPortal } from "react-dom";
-import { useSetRecoilState } from "recoil";
-import { cartState } from "../../state";
 import { FinalPrice } from "../display/final-price";
 import { Sheet } from "../../components/fullscreen-sheet";
 import { Box, Button, Text } from "zmp-ui";
@@ -10,6 +8,7 @@ import MultipleOptionPicker from "./multiple-option-picker";
 import QuantityPicker from "./quantity-picker";
 import { isIdentical } from "../../utils/product";
 import SingleOptionPicker from './single-option-picker';
+import { useStore } from "../../store/store";
 
 function getDefaultOptions(product) {
   if (product && product.variants) {
@@ -28,7 +27,8 @@ const ProductPicker = ({ children, product, selected }) => {
   const [visible, setVisible] = useState(false);
   const [options, setOptions] = useState(selected ? selected.options : getDefaultOptions(product));
   const [quantity, setQuantity] = useState(1);
-  const setCart = useSetRecoilState(cartState);
+  // eslint-disable-next-line no-unused-vars
+  const [cart, setCart] = useStore.cartItems();
 
   useEffect(() => {
     if (selected) {
