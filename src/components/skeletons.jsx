@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import { Box, Text } from "zmp-ui";
 
 // Define prop types for TextSkeleton
@@ -11,10 +10,6 @@ const TextSkeleton = ({ className, ...props }) => {
   );
 };
 
-TextSkeleton.propTypes = {
-  className: PropTypes.string, // Validate className prop
-};
-
 // Define prop types for ImageSkeleton
 const ImageSkeleton = ({ className, ...props }) => {
   return (
@@ -23,10 +18,6 @@ const ImageSkeleton = ({ className, ...props }) => {
       className={`bg-skeleton animate-pulse ${className ?? ""}`}
     />
   );
-};
-
-ImageSkeleton.propTypes = {
-  className: PropTypes.string, // Validate className prop
 };
 
 // ProductItemSkeleton component does not need specific validation for className
@@ -64,14 +55,6 @@ const ProductSearchResultSkeleton = () => {
       </Box>
     </div>
   );
-};
-
-TextSkeleton.propTypes = {
-  className: PropTypes.string,
-};
-
-ImageSkeleton.propTypes = {
-  className: PropTypes.string,
 };
 
 export {

@@ -1,5 +1,4 @@
 import { Suspense } from "react";
-import PropTypes from "prop-types";
 import { Box, Header, Page, Tabs, Text } from "zmp-ui";
 import ProductItem from "../components/product/item";
 import { mergeData } from "../hooks/hooks";
@@ -54,10 +53,6 @@ const CategoryProducts = ({ categoryId }) => {
       ))}
     </Box>
   );
-};
-
-CategoryProducts.propTypes = {
-  categoryId: PropTypes.string.isRequired,
 };
 
 const CategoryPage = () => {

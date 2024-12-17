@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import { Box, Text } from "zmp-ui";
 import { useNavigate } from "react-router";
 import { useCategories } from "../../store/categories";
@@ -32,16 +31,6 @@ const Categories = () => {
       ))}
     </Box>
   );
-};
-
-Categories.propTypes = {
-  categories: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      icon: PropTypes.string.isRequired,
-    })
-  ),
 };
 
 export default Categories;

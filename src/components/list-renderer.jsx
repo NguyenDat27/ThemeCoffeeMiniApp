@@ -1,5 +1,4 @@
 import { useMemo, useState } from "react";
-import PropTypes from "prop-types";
 import { Box, Button, Icon, Text } from "zmp-ui";
 
 function ListRenderer({
@@ -55,20 +54,5 @@ function ListRenderer({
     </Box>
   );
 }
-
-ListRenderer.propTypes = {
-  title: PropTypes.string,
-  items: PropTypes.array.isRequired,
-  limit: PropTypes.number,
-  renderLeft: PropTypes.func.isRequired, 
-  renderRight: PropTypes.func.isRequired,
-  renderKey: PropTypes.func,
-  onClick: PropTypes.func,
-  noDivider: PropTypes.bool,
-};
-
-ListRenderer.defaultProps = {
-  items: [],
-};
 
 export default ListRenderer;

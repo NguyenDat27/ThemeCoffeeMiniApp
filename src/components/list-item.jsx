@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import { Box, Icon, Text } from "zmp-ui";
 
 const ListItem = ({ title, subtitle, onClick }) => {
@@ -15,12 +14,6 @@ const ListItem = ({ title, subtitle, onClick }) => {
       <Icon icon="zi-chevron-right" />
     </Box>
   );
-};
-
-ListItem.propTypes = {
-  title: PropTypes.node.isRequired,
-  subtitle: PropTypes.node.isRequired,
-  onClick: PropTypes.func,
 };
 
 export default ListItem;

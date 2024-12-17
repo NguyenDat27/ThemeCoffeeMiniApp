@@ -1,5 +1,4 @@
-import { Suspense } from "react";
-import PropTypes from "prop-types";
+import { Suspense } from "react"
 import Section from "../../components/section";
 import { Box } from "zmp-ui";
 import ProductItem from "../../components/product/item";
@@ -46,10 +45,6 @@ const ProductList = () => {
       <ProductListContent />
     </Suspense>
   );
-};
-
-ProductListContent.propTypes = {
-  products: PropTypes.array,
 };
 
 export default ProductList;

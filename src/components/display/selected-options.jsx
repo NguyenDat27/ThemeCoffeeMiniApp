@@ -1,5 +1,4 @@
 import { useMemo } from "react";
-import PropTypes from "prop-types";
 
 export const DisplaySelectedOptions = ({ children, options }) => {
   const description = useMemo(() => {
@@ -36,24 +35,5 @@ export const DisplaySelectedOptions = ({ children, options }) => {
   }, [children, options]);
 
   return <>{description}</>;
-};
-
-DisplaySelectedOptions.propTypes = {
-  children: PropTypes.shape({
-    variants: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        type: PropTypes.string.isRequired,
-        label: PropTypes.string,
-        options: PropTypes.arrayOf(
-          PropTypes.shape({
-            id: PropTypes.string.isRequired,
-            label: PropTypes.string,
-          })
-        ).isRequired,
-      })
-    ),
-  }).isRequired,
-  options: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string, PropTypes.array])).isRequired,
 };
 

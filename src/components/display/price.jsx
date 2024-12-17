@@ -1,5 +1,4 @@
 
-import PropTypes from "prop-types";
 import { getConfig } from "../../utils/config";
 
 export const DisplayPrice = ({ children }) => {
@@ -20,8 +19,4 @@ export const DisplayPrice = ({ children }) => {
       </>
     );
   }
-};
-
-DisplayPrice.propTypes = {
-  children: PropTypes.number.isRequired,
 };

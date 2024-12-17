@@ -1,5 +1,4 @@
 import { Suspense } from "react";
-import PropTypes from "prop-types";
 import { Box, Text } from "zmp-ui";
 import { FinalPrice } from "../../components/display/final-price";
 import ProductPicker from "../../components/product/picker";
@@ -78,15 +77,6 @@ const SearchResult = () => {
       <SearchResultContent />
     </Suspense>
   );
-};
-
-
-SearchResultContent.propTypes = {
-  result: PropTypes.array.isRequired,
-};
-
-SearchResultFallback.propTypes = {
-  result: PropTypes.array,
 };
 
 export default SearchResult;

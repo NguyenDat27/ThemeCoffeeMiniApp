@@ -1,5 +1,4 @@
 import { Suspense } from "react";
-import PropTypes from "prop-types";
 import { FinalPrice } from "../../components/display/final-price";
 import { DisplayPrice } from "../../components/display/price";
 import ProductPicker from "../../components/product/picker";
@@ -92,10 +91,6 @@ const Recommend = () => {
       <RecommendContent />
     </Suspense>
   );
-};
-
-RecommendContent.propTypes = {
-  recommendProducts: PropTypes.array,
 };
 
 export default Recommend;

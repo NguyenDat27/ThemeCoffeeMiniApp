@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 
 export const DisplayDay = ({ value }) => {
   return (
@@ -10,8 +9,4 @@ export const DisplayDay = ({ value }) => {
       }
     </>
   );
-};
-
-DisplayDay.propTypes = {
-  value: PropTypes.number.isRequired,
 };

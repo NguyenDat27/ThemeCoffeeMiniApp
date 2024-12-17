@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import ListRenderer from "../components/list-renderer";
 import { Box, Header, Page, Text } from "zmp-ui";
 import Divider from "../components/divider";
@@ -40,21 +39,6 @@ const NotificationPage = () => {
       <NotificationList />
     </Page>
   );
-};
-
-NotificationList.propTypes = {
-  notifications: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-      content: PropTypes.string.isRequired,
-      image: PropTypes.string.isRequired,
-    })
-  ).isRequired,
-};
-
-NotificationList.defaultProps = {
-  notifications: [],
 };
 
 export default NotificationPage;

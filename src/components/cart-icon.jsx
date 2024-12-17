@@ -1,5 +1,4 @@
 import { Box, Text } from "zmp-ui";
-import PropTypes from "prop-types";
 import { useCartItems } from "../store/cartStore";
 
 export const CartIcon = ({ active }) => {
@@ -31,9 +30,5 @@ export const CartIcon = ({ active }) => {
       )}
     </Box>
   );
-};
-
-CartIcon.propTypes = {
-  active: PropTypes.bool,
 };
 

@@ -1,5 +1,4 @@
 import { Box } from "zmp-ui";
-import PropTypes from "prop-types";
 
 const Divider = ({ size = 8, className, ...props }) => {
   return (
@@ -15,8 +14,3 @@ const Divider = ({ size = 8, className, ...props }) => {
 };
 
 export default Divider;
-
-Divider.propTypes = {
-  size: PropTypes.number,
-  className: PropTypes.string,
-};

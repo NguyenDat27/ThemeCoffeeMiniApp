@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import { Box, Text } from "zmp-ui";
 
 const Section = ({ children, title, padding = "all", ...props }) => {
@@ -16,11 +15,4 @@ const Section = ({ children, title, padding = "all", ...props }) => {
     </Box>
   );
 };
-
-Section.propTypes = {
-  children: PropTypes.node.isRequired,
-  title: PropTypes.string.isRequired,
-  padding: PropTypes.oneOf(["all", "none", "title-only"]),
-};
-
 export default Section;

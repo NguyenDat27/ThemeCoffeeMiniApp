@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import PropTypes from "prop-types";
 
 export const ConfigProvider = ({ children, cssVariables }) => {
   useEffect(() => {
@@ -16,9 +15,4 @@ export const ConfigProvider = ({ children, cssVariables }) => {
   }, [cssVariables]);
 
   return <>{children}</>;
-};
-
-ConfigProvider.propTypes = {
-  children: PropTypes.node.isRequired,
-  cssVariables: PropTypes.object.isRequired,
 };

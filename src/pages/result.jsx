@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import PropTypes from "prop-types";
 import { Box, Button, Header, Page, Text, useNavigate } from "zmp-ui";
 import {
   Payment,
@@ -108,13 +107,6 @@ const CheckoutResultPage = () => {
       )}
     </Page>
   );
-};
-
-CheckoutResultPage.propTypes = {
-  state: PropTypes.shape({
-    path: PropTypes.string,
-    data: PropTypes.any,
-  }),
 };
 
 export default CheckoutResultPage;

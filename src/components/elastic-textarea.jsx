@@ -1,5 +1,4 @@
 import { useEffect, useRef, useCallback } from "react";
-import PropTypes from "prop-types";
 import { tripUnit } from "../utils/dom";
 
 const ElasticTextarea = ({ onChange, maxRows, ...props }) => {
@@ -43,10 +42,4 @@ const ElasticTextarea = ({ onChange, maxRows, ...props }) => {
     />
   );
 };
-
-ElasticTextarea.propTypes = {
-  onChange: PropTypes.func,
-  maxRows: PropTypes.number,
-};
-
 export default ElasticTextarea;
