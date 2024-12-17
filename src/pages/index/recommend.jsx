@@ -7,13 +7,14 @@ import Section from "../../components/section";
 import { ProductSlideSkeleton } from "../../components/skeletons";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Box, Text } from "zmp-ui";
-import { useStore } from "../../store/store";
 import { mergeData } from "../../hooks/hooks";
+import { useProducts } from "../../store/productStore";
+import { useVariants } from "../../store/variantStore";
 
 const RecommendContent = () => {
 
-  const [products] = useStore.products();
-  const [options] = useStore.variants();
+  const [products] = useProducts.products();
+  const [options] = useVariants.variants();
 
   const productCommended = mergeData(products, options)
   

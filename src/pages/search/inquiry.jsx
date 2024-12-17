@@ -1,8 +1,8 @@
 import { useCallback } from "react";
 import { Box, Input } from "zmp-ui";
-import { useStore } from "../../store/store";
+import { useProducts } from "../../store/productStore";
 const Inquiry = () => {
-  const [keyword, setKeyword] = useStore.keyword();
+  const [keyword, setKeyword] = useProducts.keyword();
 
   const handleChange = useCallback(
     (keyword) => {

@@ -4,13 +4,14 @@ import Section from "../../components/section";
 import { Box } from "zmp-ui";
 import ProductItem from "../../components/product/item";
 import { ProductItemSkeleton } from "../../components/skeletons";
-import { useStore } from "../../store/store";
 import { mergeData } from "../../hooks/hooks";
+import { useProducts } from "../../store/productStore";
+import { useVariants } from "../../store/variantStore";
 
 const ProductListContent = () => {
   
-  const [products] = useStore.products();
-  const [variants] = useStore.variants();
+  const [products] = useProducts.products();
+  const [variants] = useVariants.variants();
 
   const product = mergeData(products, variants)
 

@@ -4,10 +4,10 @@ import { FinalPrice } from "../../components/display/final-price";
 import { DisplaySelectedOptions } from "../../components/display/selected-options";
 import ListRenderer from "../../components/list-renderer";
 import ProductPicker from "../../components/product/picker";
-import { useStore } from "../../store/store";
+import { useCartItems } from "../../store/cartStore";
 
 export const CartItems = () => {
-  const [cart] = useStore.cartItems();
+  const [cart] = useCartItems.cartItems();
   const [editingItem, setEditingItem] = useState();
 
   return (

@@ -4,11 +4,11 @@ import ElasticTextarea from "../../components/elastic-textarea";
 import ListRenderer from "../../components/list-renderer";
 import StorePicker from "./store-picker";
 import TimePicker from "./time-picker";
-import { useStore } from "../../store/store";
 import PersonPicker from "./person-picker";
+import { useNotes } from "../../store/noteStore";
 
 const Delivery = () => {
-  const [note, setNote] = useStore.notes();
+  const [note, setNote] = useNotes.notes();
 
   return (
     <Box className="space-y-3 px-4">

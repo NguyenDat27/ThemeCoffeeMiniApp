@@ -8,7 +8,8 @@ import MultipleOptionPicker from "./multiple-option-picker";
 import QuantityPicker from "./quantity-picker";
 import { isIdentical } from "../../utils/product";
 import SingleOptionPicker from './single-option-picker';
-import { useStore } from "../../store/store";
+import { useCartItems } from "../../store/cartStore";
+
 
 function getDefaultOptions(product) {
   if (product && product.variants) {
@@ -28,7 +29,7 @@ const ProductPicker = ({ children, product, selected }) => {
   const [options, setOptions] = useState(selected ? selected.options : getDefaultOptions(product));
   const [quantity, setQuantity] = useState(1);
   // eslint-disable-next-line no-unused-vars
-  const [cart, setCart] = useStore.cartItems();
+  const [cart, setCart] = useCartItems.cartItems();
 
   useEffect(() => {
     if (selected) {

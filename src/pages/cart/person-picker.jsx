@@ -1,9 +1,9 @@
 import ListItem from "../../components/list-item";
-import { useStore } from "../../store/store";
+import { useUserInfo } from "../../store/infoStore";
 
 const PersonPicker = () => {
-  const [user, setUser] = useStore.user();
-  const [phone, setPhone] = useStore.phone();
+  const [user, setUser] = useUserInfo.user();
+  const [phone, setPhone] = useUserInfo.phone();
 
   const noUserPhone = () => {
     setUser("User Name");

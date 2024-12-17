@@ -3,7 +3,12 @@ import { RecoilRoot } from "recoil";
 import { getConfig } from "../utils/config";
 import Layout from "./layout";
 import { ConfigProvider } from "./config-provider";
-import { useStore } from "../store/store";
+import { useBanners } from "../store/bannerStore";
+import { useCategories } from "../store/categories";
+import { useProducts } from "../store/productStore";
+import { useVariants } from "../store/variantStore";
+import { useNotifications } from "../store/notification";
+import { useStores } from "../store/listStore";
 import { useEffect } from "react";
 import bannerData from "../data/banner.json"
 import categoryData from "../data/categories.json"
@@ -15,12 +20,12 @@ import { sortByDistance } from "../hooks/hooks";
 
 const MyApp = () => {
 
-  const [banner, setBanner] = useStore.banners();
-  const [category, setCategory] = useStore.categories();
-  const [product, setProduct] = useStore.products();
-  const [variant, setVariant] = useStore.variants();
-  const [notification, setNotification] = useStore.notifications();
-  const [store, setStore] = useStore.stores();
+  const [banner, setBanner] = useBanners.banners();
+  const [category, setCategory] = useCategories.categories();
+  const [product, setProduct] = useProducts.products();
+  const [variant, setVariant] = useVariants.variants();
+  const [notification, setNotification] = useNotifications.notifications();
+  const [store, setStore] = useStores.stores();
 
   useEffect(() => {
 

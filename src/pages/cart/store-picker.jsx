@@ -3,12 +3,12 @@ import { createPortal } from "react-dom";
 import { ActionSheet } from "../../components/fullscreen-sheet";
 import ListItem from "../../components/list-item";
 import { displayDistance } from "../../utils/location";
-import { useStore } from "../../store/store";
+import { useStores } from "../../store/listStore";
 
 const StorePicker = () => {
   const [visible, setVisible] = useState(false);
-  const [stores] = useStore.stores();
-  const [selectedStore, setSelectedStore] = useStore.selectStore();
+  const [stores] = useStores.stores();
+  const [selectedStore, setSelectedStore] = useStores.selectStore();
 
   const noStore = () => {
     setSelectedStore(stores[0]);

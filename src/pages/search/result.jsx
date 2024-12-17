@@ -4,14 +4,15 @@ import { Box, Text } from "zmp-ui";
 import { FinalPrice } from "../../components/display/final-price";
 import ProductPicker from "../../components/product/picker";
 import { ProductSearchResultSkeleton } from "../../components/skeletons";
-import { useStore } from "../../store/store";
 import { mergeData, useFilteredProducts } from "../../hooks/hooks";
+import { useProducts } from "../../store/productStore";
+import { useVariants } from "../../store/variantStore";
 
 const SearchResultContent = () => {
   
-  const [keyword] = useStore.keyword();
-  const [products] = useStore.products();
-  const [variants] = useStore.variants();
+  const [keyword] = useProducts.keyword();
+  const [products] = useProducts.products();
+  const [variants] = useVariants.variants();
 
   const productFiltered = useFilteredProducts(keyword, products);
   const result = mergeData(productFiltered, variants);

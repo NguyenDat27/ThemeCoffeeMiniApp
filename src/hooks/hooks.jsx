@@ -2,8 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import { matchStatusBarColor } from "../utils/device";
 import { EventName, events } from "zmp-sdk";
 import { useNavigate, useSnackbar } from "zmp-ui";
-import { useStore } from "../store/store";
+
 import { calcFinalPrice } from "../utils/product";
+import { useCartItems } from "../store/cartStore";
 
 // Hook for matching status bar text color visibility
 export function useMatchStatusTextColor(visible) {
@@ -134,7 +135,7 @@ export function useFilteredProducts(keyword, products) {
 }
 
 export function calTotalPrice () {
-  const cart = useStore.cartItems();
+  const cart = useCartItems.cartItems();
       return cart.reduce(
         (total, item) =>
           total + item.quantity * calcFinalPrice(item.product, item.options),
@@ -143,7 +144,7 @@ export function calTotalPrice () {
 }
 
 export function calTotalItems () {
-    const cart = useStore.cartItems();
+    const cart = useCartItems.cartItems();
     return cart.reduce((total, item) => total + item.quantity, 0);
 }
 

@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import { displayDate, displayHalfAnHourTimeRange } from "../../utils/date";
 import { matchStatusBarColor } from "../../utils/device";
 import { Picker } from "zmp-ui";
-import { useStore } from "../../store/store";
+import { useNotes } from "../../store/noteStore";
 
 // Opening hours: 7:00 - 21:00
 const OPENING_HOUR = 7;
@@ -10,7 +10,7 @@ const CLOSING_HOUR = 21;
 
 const TimePicker = () => {
   const [date, setDate] = useState(+new Date());
-  const [time, setTime] = useStore.deliveryTime();
+  const [time, setTime] = useNotes.deliveryTime();
 
   const availableDates = useMemo(() => {
     const days = [];

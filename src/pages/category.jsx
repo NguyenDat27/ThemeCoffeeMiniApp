@@ -2,11 +2,14 @@ import { Suspense } from "react";
 import PropTypes from "prop-types";
 import { Box, Header, Page, Tabs, Text } from "zmp-ui";
 import ProductItem from "../components/product/item";
-import { useStore } from "../store/store";
+import { mergeData } from "../hooks/hooks";
+import { useCategories } from "../store/categories";
+import { useProducts } from "../store/productStore";
+import { useVariants } from "../store/variantStore";
 
 const CategoryPicker = () => {
-  const [selectedCategory] = useStore.selectedCategory();
-  const [categories] = useStore.categories();
+  const [selectedCategory] = useCategories.selectedCategory();
+  const [categories] = useCategories.categories();
   
   return (
     <Tabs
@@ -27,12 +30,15 @@ const CategoryPicker = () => {
 
 const CategoryProducts = ({ categoryId }) => {
 
-  const products = useStore.products();
-  const productsByCategory = products.filter((product) =>
+  const [products] = useProducts.products();
+  const [variants] = useVariants.variants();
+  const productsByCate = products.filter((product) =>
         product.categoryId.includes(categoryId)
       );
 
-  if (productsByCategory.length === 0) {
+  const productsByCategory = mergeData(productsByCate, variants);
+
+  if (productsByCate.length === 0) {
     return (
       <Box className="flex-1 bg-background p-4 flex justify-center items-center">
         <Text size="xSmall" className="text-gray">

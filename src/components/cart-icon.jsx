@@ -1,9 +1,9 @@
 import { Box, Text } from "zmp-ui";
 import PropTypes from "prop-types";
-import { useStore } from "../store/store";
+import { useCartItems } from "../store/cartStore";
 
 export const CartIcon = ({ active }) => {
-  const [cart] = useStore.cartItems();
+  const [cart] = useCartItems.cartItems();
 
   return (
     <Box className="relative">

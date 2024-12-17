@@ -5,13 +5,12 @@ import {
   Payment,
 } from "zmp-sdk";
 import { useLocation } from "react-router";
-import { useResetRecoilState } from "recoil";
-import { cartState } from "../state";
 import {
   IconPaymentFail,
   IconPaymentLoading,
   IconPaymentSuccess,
 } from "../components/payment-icon";
+import { useCartItems } from "../store/cartStore";
 
 const CheckoutResultPage = () => {
   const navigate = useNavigate();
@@ -56,12 +55,13 @@ const CheckoutResultPage = () => {
     };
   }, [state]);
 
-  const clearCart = useResetRecoilState(cartState);
+  const [cart, setCart] = useCartItems.cartItems();
   useEffect(() => {
     if (paymentResult?.resultCode >= 0) {
-      clearCart();
+      console.log(cart);
+      setCart([]);
     }
-  }, [paymentResult, clearCart]);
+  }, [paymentResult, cart, setCart]);
 
   const renderResult = ({ title, message, icon }) => (
     <Box className="p-6 space-y-3 flex-1 flex flex-col justify-center items-center text-center">

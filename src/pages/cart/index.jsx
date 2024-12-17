@@ -5,12 +5,12 @@ import CartPreview from "./preview";
 import TermsAndPolicies from "./term-and-policies";
 import Delivery from "./delivery";
 import { useVirtualKeyboardVisible } from "../../hooks/hooks";
-import { useStore } from "../../store/store";
+import { useCartItems } from "../../store/cartStore";
 
 const CartPage = () => {
   const keyboardVisible = useVirtualKeyboardVisible();
   
-  const [cart] = useStore.cartItems();
+  const [cart] = useCartItems.cartItems();
   console.log(cart);
 
   return (

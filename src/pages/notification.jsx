@@ -2,11 +2,11 @@ import PropTypes from "prop-types";
 import ListRenderer from "../components/list-renderer";
 import { Box, Header, Page, Text } from "zmp-ui";
 import Divider from "../components/divider";
-import { useStore } from "../store/store";
+import { useNotifications } from "../store/notification";
 
 const NotificationList = () => {
   
-  const [notifications] = useStore.notifications();
+  const [notifications] = useNotifications.notifications();
 
   return (
     <Box className="bg-background">

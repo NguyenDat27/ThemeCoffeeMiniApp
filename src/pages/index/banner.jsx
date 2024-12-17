@@ -1,10 +1,10 @@
 import { Swiper} from "zmp-ui"
 import { Box } from "zmp-ui";
-import { useStore } from "../../store/store";
+import { useBanners } from "../../store/bannerStore";
 
 const Banner = () => {
 
-  const [banner] = useStore.banners()  
+  const [banner] = useBanners.banners()  
 
   return (
     <Box className="bg-white" pb={4}>

@@ -1,11 +1,11 @@
 import { Box, Button, Text } from "zmp-ui";
 import { DisplayPrice } from "../../components/display/price";
 import pay from "../../utils/product";
-import { useStore } from "../../store/store";
 import { calcFinalPrice } from "../../utils/product";
+import { useCartItems } from "../../store/cartStore";
 
 const CartPreview = () => {
-  const [cartItems] = useStore.cartItems();
+  const [cartItems] = useCartItems.cartItems();
   console.log(cartItems)
 
   const quantity = cartItems.reduce((total, item) => total + item.quantity, 0);
