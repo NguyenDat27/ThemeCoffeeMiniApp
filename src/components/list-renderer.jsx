@@ -3,7 +3,7 @@ import { Box, Button, Icon, Text } from "zmp-ui";
 
 function ListRenderer({
   title,
-  items,
+  items = [],
   limit,
   renderLeft,
   renderRight,
