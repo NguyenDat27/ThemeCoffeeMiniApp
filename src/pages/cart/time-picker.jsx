@@ -12,6 +12,8 @@ const TimePicker = () => {
   const [date, setDate] = useState(+new Date());
   const [time, setTime] = useNotes.deliveryTime();
 
+  console.log(time);
+
   const availableDates = useMemo(() => {
     const days = [];
     const today = new Date();
@@ -22,8 +24,6 @@ const TimePicker = () => {
     }
     return days;
   }, []);
-
-  console.log(time);
 
   const availableTimes = useMemo(() => {
     const times = [];
