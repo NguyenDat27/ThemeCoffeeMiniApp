@@ -9,10 +9,10 @@ const OPENING_HOUR = 7;
 const CLOSING_HOUR = 21;
 
 const TimePicker = () => {
-  const [date, setDate] = useState(+new Date());
+  const [date, setDate] = useState(null);
   const [time, setTime] = useNotes.deliveryTime();
 
-  console.log(time);
+  console.log("time",time)
 
   const availableDates = useMemo(() => {
     const days = [];
