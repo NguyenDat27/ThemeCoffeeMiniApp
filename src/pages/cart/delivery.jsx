@@ -2,14 +2,13 @@ import { Suspense } from "react";
 import { Box, Icon, Text } from "zmp-ui";
 import ElasticTextarea from "../../components/elastic-textarea";
 import ListRenderer from "../../components/list-renderer";
-import { RequestPersonPickerPhone } from "./person-picker";
-import { RequestStorePickerLocation, StorePicker } from "./store-picker";
+import StorePicker from "./store-picker";
 import TimePicker from "./time-picker";
-import { useRecoilState } from "recoil";
-import { orderNoteState } from "../../state";
+import { useStore } from "../../store/store";
+import PersonPicker from "./person-picker";
 
 const Delivery = () => {
-  const [note, setNote] = useRecoilState(orderNoteState);
+  const [note, setNote] = useStore.notes();
 
   return (
     <Box className="space-y-3 px-4">
@@ -19,7 +18,7 @@ const Delivery = () => {
           {
             left: <Icon icon="zi-location" className="my-auto" />,
             right: (
-              <Suspense fallback={<RequestStorePickerLocation />}>
+              <Suspense>
                 <StorePicker />
               </Suspense>
             ),
@@ -40,7 +39,7 @@ const Delivery = () => {
           },
           {
             left: <Icon icon="zi-user" className="my-auto" />,
-            right: <RequestPersonPickerPhone />,
+            right: <PersonPicker/>
           },
           {
             left: <Icon icon="zi-note" className="my-auto" />,

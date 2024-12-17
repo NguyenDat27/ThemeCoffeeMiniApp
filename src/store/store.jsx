@@ -10,8 +10,12 @@ export const {useStore} = createStore(
         notification: [],
         keyword: "",
         cartItems: [],
-        totalPrice: 0,
-        quantity: 0,
+        stores: [],
+        selectStore: [],
+        notes: "",
+        deliveryTime: 0,
+        user: "",
+        phone: "",
     },
 )
 

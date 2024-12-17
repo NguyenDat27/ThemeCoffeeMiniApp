@@ -11,21 +11,21 @@
         "name": "The Independence Palace",
         "address":
           "135 Nam Kỳ Khởi Nghĩa, Bến Thành, Quận 1, Thành phố Hồ Chí Minh, Việt Nam",
-          "distance": 1143.5
+        "distance": 1143.5
       },
       {
         "id": 3,
         "name": "Saigon Notre-Dame Cathedral Basilica",
         "address":
           "1 Công xã Paris, Bến Nghé, Quận 1, Thành phố Hồ Chí Minh, Việt Nam",
-          "distance": 1143.5
+        "distance": 1143.5
       },
       {
         "id": 4,
         "name": "Bình Quới Tourist Village",
         "address":
           "1147 Bình Quới, phường 28, Bình Thạnh, Thành phố Hồ Chí Minh, Việt Nam",
-          "distance": 1138.1
+        "distance": 1138.1
       },
       {
         "id": 5,

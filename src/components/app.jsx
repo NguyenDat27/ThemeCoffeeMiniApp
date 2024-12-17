@@ -10,6 +10,8 @@ import categoryData from "../data/categories.json"
 import productData from "../data/products.json"
 import variantsData from "../data/variants.json"
 import { notificationData } from "../data/notification";
+import storeData from "../data/store.json"
+import { sortByDistance } from "../hooks/hooks";
 
 const MyApp = () => {
 
@@ -18,8 +20,12 @@ const MyApp = () => {
   const [product, setProduct] = useStore.products();
   const [variant, setVariant] = useStore.variants();
   const [notification, setNotification] = useStore.notifications();
+  const [store, setStore] = useStore.stores();
 
   useEffect(() => {
+
+    const sortStores = sortByDistance(storeData);
+
     console.log(banner);
     setBanner(bannerData);
     
@@ -34,6 +40,10 @@ const MyApp = () => {
 
     console.log(notification);
     setNotification(notificationData);
+
+    console.log(store);
+    setStore(sortStores);
+
   }, [])
 
   return (

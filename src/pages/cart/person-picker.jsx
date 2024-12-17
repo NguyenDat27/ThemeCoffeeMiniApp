@@ -1,34 +1,31 @@
 import ListItem from "../../components/list-item";
-import { useRecoilValue, useRecoilValueLoadable, useSetRecoilState } from "recoil";
-import { phoneState, requestPhoneTriesState, userState } from "../../state";
+import { useStore } from "../../store/store";
 
 const PersonPicker = () => {
-  const user = useRecoilValueLoadable(userState);
-  const phone = useRecoilValue(phoneState);
+  const [user, setUser] = useStore.user();
+  const [phone, setPhone] = useStore.phone();
+
+  const noUserPhone = () => {
+    setUser("User Name");
+    setPhone("0337076898")
+  }
+
+  if (user === "" && phone === "") {
+    return (
+      <ListItem
+        onClick={() => noUserPhone()}
+        title="Chọn người nhận"
+        subtitle="Yêu cầu truy cập số điện thoại"
+      />
+    );
+  }
 
   return (
     <ListItem
-      title={user.state === "hasValue" ? `${user.contents.name} - ${phone}` : phone}
+      title={`${user} - ${phone}`}
       subtitle="Người nhận"
     />
   );
 };
 
-const RequestPersonPickerPhone = () => {
-  const retry = useSetRecoilState(requestPhoneTriesState);
-  const phone = useRecoilValueLoadable(phoneState);
-
-  if (phone.state === "hasValue" && phone.contents) {
-    return <PersonPicker />;
-  }
-
-  return (
-    <ListItem
-      onClick={() => retry((r) => r + 1)}
-      title="Chọn người nhận"
-      subtitle="Yêu cầu truy cập số điện thoại"
-    />
-  );
-};
-
-export { PersonPicker, RequestPersonPickerPhone };
+export default PersonPicker;

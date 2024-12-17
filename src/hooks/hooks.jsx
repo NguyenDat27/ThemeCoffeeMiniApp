@@ -146,3 +146,7 @@ export function calTotalItems () {
     const cart = useStore.cartItems();
     return cart.reduce((total, item) => total + item.quantity, 0);
 }
+
+export function sortByDistance(locations) {
+  return locations.sort((a, b) => a.distance - b.distance);
+}

@@ -1,7 +1,5 @@
 import { Suspense } from "react";
 import PropTypes from "prop-types";
-import { useRecoilValue } from "recoil";
-import { productsByCategoryState } from "../state";
 import { Box, Header, Page, Tabs, Text } from "zmp-ui";
 import ProductItem from "../components/product/item";
 import { useStore } from "../store/store";
@@ -28,7 +26,11 @@ const CategoryPicker = () => {
 };
 
 const CategoryProducts = ({ categoryId }) => {
-  const productsByCategory = useRecoilValue(productsByCategoryState(categoryId));
+
+  const products = useStore.products();
+  const productsByCategory = products.filter((product) =>
+        product.categoryId.includes(categoryId)
+      );
 
   if (productsByCategory.length === 0) {
     return (
