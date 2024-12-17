@@ -17,9 +17,9 @@ const Categories = () => {
 
   return (
     <Box className="bg-white grid grid-cols-4 gap-4 p-4">
-      {categories.map((category, i) => (
+      {categories.map((category, index) => (
         <div
-          key={i}
+          key={category.id || index}
           onClick={() => gotoCategory(category.id)}
           className="flex flex-col space-y-2 items-center"
         >

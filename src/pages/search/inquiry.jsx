@@ -36,7 +36,6 @@ const Inquiry = () => {
         onChange={(e) => handleChange(e.target.value)}
         placeholder="Tìm nhanh đồ uống, món mới ..."
         clearable
-        allowClear
       />
     </Box>
   );

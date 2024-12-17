@@ -1,7 +1,22 @@
 [
-    "https://stc-zmp.zadn.vn/templates/zaui-coffee/dummy/banner-1.webp",
-    "https://stc-zmp.zadn.vn/templates/zaui-coffee/dummy/banner-2.webp",
-    "https://stc-zmp.zadn.vn/templates/zaui-coffee/dummy/banner-3.webp",
-    "https://stc-zmp.zadn.vn/templates/zaui-coffee/dummy/banner-4.webp",
-    "https://stc-zmp.zadn.vn/templates/zaui-coffee/dummy/banner-5.webp"
+    {
+        "id":1,
+        "url":"https://stc-zmp.zadn.vn/templates/zaui-coffee/dummy/banner-1.webp"
+    },
+    {
+        "id":2,
+        "url":"https://stc-zmp.zadn.vn/templates/zaui-coffee/dummy/banner-2.webp"
+    },
+    {
+        "id":3,
+        "url":"https://stc-zmp.zadn.vn/templates/zaui-coffee/dummy/banner-3.webp"
+    },
+    {
+        "id":4,
+        "url":"https://stc-zmp.zadn.vn/templates/zaui-coffee/dummy/banner-4.webp"
+    },
+    {
+        "id":5,
+        "url":"https://stc-zmp.zadn.vn/templates/zaui-coffee/dummy/banner-5.webp"
+    }
 ]

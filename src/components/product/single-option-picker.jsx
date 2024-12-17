@@ -1,7 +1,10 @@
-import PropTypes from "prop-types";
 import { Box, Radio, Text } from "zmp-ui";
 
 const SingleOptionPicker = ({ variant, value, onChange }) => {
+  const handleChange = (selectedOption) => {
+    onChange(selectedOption); // Gọi onChange chỉ một lần
+  };
+
   return (
     <Box my={8} className="space-y-2">
       <Text.Title size="small">{variant.label}</Text.Title>
@@ -13,27 +16,10 @@ const SingleOptionPicker = ({ variant, value, onChange }) => {
           label: option.label,
         }))}
         value={value}
-        onChange={(selectedOption) => {
-          onChange(selectedOption);
-        }}
+        onChange={handleChange} 
       />
     </Box>
   );
-};
-
-SingleOptionPicker.propTypes = {
-  variant: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired,
-    options: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        label: PropTypes.string.isRequired,
-      })
-    ).isRequired,
-  }).isRequired,
-  value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
 };
 
 export default SingleOptionPicker;

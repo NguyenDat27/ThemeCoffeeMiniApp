@@ -1,13 +1,16 @@
 import { Box } from "zmp-ui";
+import styled from "styled-components";
+
+const StyledBox = styled(Box)`
+  min-height: ${(props) => props.size || 8}px;
+  background-color: var(--zmp-background-color);
+`;
 
 const Divider = ({ size = 8, className, ...props }) => {
   return (
-    <Box
+    <StyledBox
+      size={size}
       className={className}
-      style={{
-        minHeight: size,
-        backgroundColor: "var(--zmp-background-color)",
-      }}
       {...props}
     />
   );

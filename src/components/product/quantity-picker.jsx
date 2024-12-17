@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import { Box, Button, Icon, Text } from "zmp-ui";
 
 const QuantityPicker = ({ value, onChange }) => {
@@ -28,11 +27,6 @@ const QuantityPicker = ({ value, onChange }) => {
       />
     </Box>
   );
-};
-
-QuantityPicker.propTypes = {
-  value: PropTypes.number.isRequired,
-  onChange: PropTypes.func.isRequired,
 };
 
 export default QuantityPicker;

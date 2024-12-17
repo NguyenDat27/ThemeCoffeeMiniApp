@@ -1,8 +1,11 @@
-import PropTypes from "prop-types";
 import { DisplayPriceChange } from "../../components/display/price-change";
 import { Box, Checkbox, Text } from "zmp-ui";
 
 const MultipleOptionPicker = ({ product, variant, value, onChange }) => {
+  const handleChange = (selectedOptions) => {
+    onChange(selectedOptions); // Call the passed-in onChange handler
+  };
+
   return (
     <Box my={8} className="space-y-2">
       <Text.Title size="small">{variant.label}</Text.Title>
@@ -23,34 +26,12 @@ const MultipleOptionPicker = ({ product, variant, value, onChange }) => {
             </div>
           ),
         }))}
-        value={value}
-        defaultValue={value}
-        onChange={(selectedOptions) => {
-          onChange(selectedOptions);
-        }}
+        value={value} 
+        onChange={handleChange}
       />
     </Box>
   );
 };
 
-// Prop validation
-MultipleOptionPicker.propTypes = {
-  product: PropTypes.shape({
-    image: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-  }).isRequired,
-  variant: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired,
-    options: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        label: PropTypes.string.isRequired,
-      })
-    ).isRequired,
-  }).isRequired,
-  value: PropTypes.arrayOf(PropTypes.string).isRequired,
-  onChange: PropTypes.func.isRequired,
-};
 
 export default MultipleOptionPicker;

@@ -75,8 +75,8 @@ const RecommendFallback = () => {
   return (
     <Section title="Gợi ý cho bạn" padding="title-only">
       <Swiper slidesPerView={1.25} spaceBetween={16} className="px-4">
-        {recommendProducts.map((_, i) => (
-          <SwiperSlide key={i}>
+        {recommendProducts.map((product, index) => (
+          <SwiperSlide key={product.id || index}>
             <ProductSlideSkeleton />
           </SwiperSlide>
         ))}

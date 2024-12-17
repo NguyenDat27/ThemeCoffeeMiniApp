@@ -1,7 +1,6 @@
 import { Box, Header, Text } from "zmp-ui";
 import logo from "../../static/logo.png";
 import appConfig from "../../../app-config.json";
-import { getConfig } from "../../utils/config";
 
 const Welcome = () => {
   return (
@@ -12,7 +11,7 @@ const Welcome = () => {
         <Box flex alignItems="center" className="space-x-2">
           <img
             className="w-8 h-8 rounded-lg border-inset"
-            src={getConfig((c) => c.template.headerLogo) || logo}
+            src={logo}
             alt="App Logo"
           />
           <Box>
