@@ -9,6 +9,7 @@ import QuantityPicker from "./quantity-picker";
 import { isIdentical } from "../../utils/product";
 import SingleOptionPicker from './single-option-picker';
 import { useCartItems } from "../../store/cartStore";
+import { produce } from "immer";
 
 
 function getDefaultOptions(product) {
@@ -40,53 +41,61 @@ const ProductPicker = ({ children, product, selected }) => {
 
   const addToCart = () => {
     if (product) {
-      setCart((cart) => {
-        let res = [...cart];
-        if (selected) {
-          const editing = cart.find(
-            (item) =>
-              item.product.id === product.id &&
-              isIdentical(item.options, selected.options)
-          );
-          if (quantity === 0) {
-            res.splice(cart.indexOf(editing), 1);
+      setCart((cart) =>
+        produce(cart, (draft) => {
+          if (selected) {
+            const editing = draft.find(
+              (item) =>
+                item.product.id === product.id &&
+                isIdentical(item.options, selected.options)
+            );
+            if (quantity === 0) {
+              const index = draft.indexOf(editing);
+              if (index !== -1) draft.splice(index, 1);
+            } else {
+              const existed = draft.find(
+                (item, i) =>
+                  i !== draft.indexOf(editing) &&
+                  item.product.id === product.id &&
+                  isIdentical(item.options, options)
+              );
+              const index = draft.indexOf(editing);
+              if (index !== -1) {
+                draft.splice(index, 1, {
+                  ...editing,
+                  options,
+                  quantity: existed ? existed.quantity + quantity : quantity,
+                });
+              }
+              if (existed) {
+                const existedIndex = draft.indexOf(existed);
+                if (existedIndex !== -1) draft.splice(existedIndex, 1);
+              }
+            }
           } else {
-            const existed = cart.find(
-              (item, i) =>
-                i !== cart.indexOf(editing) &&
+            const existed = draft.find(
+              (item) =>
                 item.product.id === product.id &&
                 isIdentical(item.options, options)
             );
-            res.splice(cart.indexOf(editing), 1, {
-              ...editing,
-              options,
-              quantity: existed ? existed.quantity + quantity : quantity,
-            });
             if (existed) {
-              res.splice(cart.indexOf(existed), 1);
+              const existedIndex = draft.indexOf(existed);
+              if (existedIndex !== -1) {
+                draft.splice(existedIndex, 1, {
+                  ...existed,
+                  quantity: existed.quantity + quantity,
+                });
+              }
+            } else {
+              draft.push({
+                product,
+                options,
+                quantity,
+              });
             }
           }
-        } else {
-          const existed = cart.find(
-            (item) =>
-              item.product.id === product.id &&
-              isIdentical(item.options, options)
-          );
-          if (existed) {
-            res.splice(cart.indexOf(existed), 1, {
-              ...existed,
-              quantity: existed.quantity + quantity,
-            });
-          } else {
-            res = res.concat({
-              product,
-              options,
-              quantity,
-            });
-          }
-        }
-        return res;
-      });
+        })
+      );
     }
     setVisible(false);
   };

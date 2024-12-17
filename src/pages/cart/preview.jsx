@@ -3,17 +3,22 @@ import { DisplayPrice } from "../../components/display/price";
 import pay from "../../utils/product";
 import { calcFinalPrice } from "../../utils/product";
 import { useCartItems } from "../../store/cartStore";
+import { produce } from "immer";
 
 const CartPreview = () => {
   const [cartItems] = useCartItems.cartItems();
   console.log(cartItems)
 
-  const quantity = cartItems.reduce((total, item) => total + item.quantity, 0);
-
-  const totalPrice =   cartItems.reduce((total, item) =>
+  const quantity = produce(cartItems, draft => {
+    return draft.reduce((total, item) => total + item.quantity, 0);
+  });
+  
+  const totalPrice = produce(cartItems, draft => {
+    return draft.reduce((total, item) =>
       total + item.quantity * calcFinalPrice(item.product, item.options),
-    0
-  );
+      0
+    );
+  });
 
   return (
     <Box flex className="sticky bottom-0 bg-background p-4 space-x-4">
